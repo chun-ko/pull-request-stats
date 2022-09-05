@@ -89,7 +89,7 @@ const run = async (params) => {
     octokit,
     content,
     publishAs,
-    issueId,
+    pullRequestId: issueId,
     currentBody: '',
   });
 
