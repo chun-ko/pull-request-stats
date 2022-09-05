@@ -31,6 +31,8 @@ const run = async (params) => {
     issueId,
   } = params;
 
+  core.info(`Issue Id ${issueId}`);
+
   const pullRequest = pullRequestId
     ? await fetchPullRequestById(octokit, pullRequestId)
     : null;
