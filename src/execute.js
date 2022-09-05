@@ -73,15 +73,15 @@ const run = async (params) => {
     pullRequest,
   });
 
-  if (!pullRequestId) return;
-  await postComment({
-    octokit,
-    content,
-    publishAs,
-    pullRequestId,
-    currentBody: pullRequest.body,
-  });
-
+  if (pullRequestId) {
+    await postComment({
+      octokit,
+      content,
+      publishAs,
+      pullRequestId,
+      currentBody: pullRequest.body,
+    });
+  }
   if (!issueId) return;
   await postComment({
     octokit,
