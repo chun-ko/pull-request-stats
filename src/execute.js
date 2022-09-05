@@ -28,6 +28,7 @@ const run = async (params) => {
     personalToken,
     displayCharts,
     pullRequestId,
+    issueId,
   } = params;
 
   const pullRequest = pullRequestId
@@ -80,6 +81,16 @@ const run = async (params) => {
     pullRequestId,
     currentBody: pullRequest.body,
   });
+
+  if (!issueId) return;
+  await postComment({
+    octokit,
+    content,
+    publishAs,
+    issueId,
+    currentBody: '',
+  });
+
   core.debug('Posted comment successfully');
 };
 

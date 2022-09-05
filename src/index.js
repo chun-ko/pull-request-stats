@@ -17,6 +17,7 @@ const getRepositories = (currentRepo) => {
 };
 
 const getPrId = () => get(github, 'context.payload.pull_request.node_id');
+const getIssueId = () => get(github, 'context.payload.issue.node_id');
 
 const getParams = () => {
   const currentRepo = process.env.GITHUB_REPOSITORY;
@@ -35,6 +36,7 @@ const getParams = () => {
     displayCharts: core.getBooleanInput('charts'),
     disableLinks: core.getBooleanInput('disable-links'),
     pullRequestId: getPrId(),
+    issueId: getIssueId(),
     limit: parseInt(core.getInput('limit'), 10),
     telemetry: core.getBooleanInput('telemetry'),
     slack: {
